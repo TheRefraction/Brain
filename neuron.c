@@ -12,18 +12,21 @@ Neuron *allocateNeuron(List *weights, float threshold) {
 }
 
 void freeNeuron(Neuron *neuron) {
-    freeList(neuron->weights);
-    free(neuron);
+    if(neuron != NULL)
+    {
+        freeList(neuron->weights);
+        free(neuron);
+    }
 }
 
-float getNeuronOutput(Neuron *neuron, List *inputs) {
+float getNeuronOutput(const Neuron *neuron, const List *inputs) {
     if(neuron == NULL || neuron->weights == NULL || inputs == NULL || inputs->length != neuron->weights->length) {
         printf("Could not get output!\n");
         return 0;
     }
     float x = 0;
-    Node *Wi = neuron->weights->head;
-    Node *Ei = inputs->head;
+    const Node *Wi = neuron->weights->head;
+    const Node *Ei = inputs->head;
     while(Wi != NULL) {
         x += Wi->value * Ei->value;
         Wi = Wi->next;
@@ -42,6 +45,3 @@ void printNeuron(Neuron *neuron) {
     printList(neuron->weights, 0);
     printf(", Threshold->%f\n", neuron->threshold);
 }
-
-/*I feel a bit useless ( :'), I write only little commentaries, */
-

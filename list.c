@@ -21,11 +21,25 @@ List *allocateList() {
     return list;
 }
 
-void freeList(List *list) {
-    while(list->length > 0) {
-        list = removeHeadList(list);
+List *createList(size_t length, float value)
+{
+    List *list = allocateList();
+    for (size_t i = 0; i < length; i++)
+    {
+        list = insertHeadList(list, value);
     }
-    free(list);
+
+    return list;
+}
+
+void freeList(List *list) {
+    if(list != NULL)
+    {
+        while(list->length > 0) {
+            list = removeHeadList(list);
+        }
+        free(list);
+    }
 }
 
 List *insertHeadList(List *list, float value) {
