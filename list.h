@@ -42,13 +42,13 @@ List* allocateList();
 List *createList(size_t length, float value);
 
 /**
- * free the 
+ * free the list
  * @param list
  */
 void freeList(List* list);
 
 /**
- *
+ * insert a value in head of the list
  * @param list
  * @param value
  * @return
@@ -56,7 +56,7 @@ void freeList(List* list);
 List *insertHeadList(List *list, float value);
 
 /**
- *
+ * insert a value in tail of the list
  * @param list
  * @param value
  * @return
@@ -64,21 +64,21 @@ List *insertHeadList(List *list, float value);
 List *insertTailList(List *list, float value);
 
 /**
- *
+ * remove the head of a list
  * @param list
  * @return
  */
 List *removeHeadList(List *list);
 
 /**
- *
+ * remove the tail of a list
  * @param list
  * @return
  */
 List *removeTailList(List *list);
 
 /**
- *
+ * print a list with all the value with the address of the next one 
  * @param list
  */
 void printFullList(List *list);
@@ -88,7 +88,7 @@ void printFullList(List *list);
  * @param list
  * @param newline
  */
-void printList(List *list, int newline);
+void printList(const List *list, int newline);
 
 // I am really happy to be here
 #endif //LIST_H

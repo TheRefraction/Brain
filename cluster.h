@@ -80,5 +80,7 @@ Cluster *removeHeadCluster(Cluster *cluster);
  */
 Cluster *removeTailCluster(Cluster *cluster);
 
+List *getClusterOutput(const Cluster *cluster, const List *inputs);
+
 
 #endif //CLUSTER_H

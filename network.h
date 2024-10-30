@@ -20,7 +20,7 @@ typedef struct
 NetworkNode *allocateNetworkNode(Cluster *cluster);
 void freeNetworkNode(NetworkNode *node);
 
-Network *allocateNetwork(unsigned int numOfClusters, List *numOfNeurons);
+Network *allocateNetwork(unsigned int numOfClusters, const List *numOfNeurons);
 void freeNetwork(Network *network);
 
 Network *insertHeadNetwork(Network *network, Cluster *cluster);

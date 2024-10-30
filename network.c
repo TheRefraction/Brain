@@ -50,7 +50,7 @@ void freeNetwork(Network *network)
     if(network != NULL)
     {
         while(network->length > 0) {
-            network = removeHeadCluster(network);
+            network = removeHeadNetwork(network);
         }
         free(network);
     }

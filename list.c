@@ -42,7 +42,7 @@ void freeList(List *list) {
     }
 }
 
-List *insertHeadList(List *list, float value) {
+List *insertHeadList(List *list, const float value) {
     if(list == NULL) {
         list = allocateList();
     }
@@ -59,7 +59,7 @@ List *insertHeadList(List *list, float value) {
     return list;
 }
 
-List *insertTailList(List *list, float value) {
+List *insertTailList(List *list, const float value) {
     if(list == NULL) {
         list = allocateList();
     }
@@ -130,13 +130,13 @@ void printFullList(List *list) {
     putchar('\n');
 }
 
-void printList(List *list, int newline) {
+void printList(const List *list, const int newline) {
     if(list == NULL) {
         printf("List is undefined\n");
         return;
     }
     putchar('[');
-    Node *It = list->head;
+    const Node *It = list->head;
     while(It != NULL) {
         printf("%f", It->value);
         if(It->next != NULL) {
@@ -149,5 +149,3 @@ void printList(List *list, int newline) {
         putchar('\n');
     }
 }
-
-/*I'm an excellent psy, and my fee is $10 per minute */

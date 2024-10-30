@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Neuron *allocateNeuron(List *weights, float threshold) {
+Neuron *allocateNeuron(List *weights, const float threshold) {
     Neuron *neuron = malloc(sizeof(Neuron));
     neuron->weights = weights;
     neuron->threshold = threshold;

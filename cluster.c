@@ -19,7 +19,7 @@ void freeClusterNode(ClusterNode *node) {
     }
 }
 
-Cluster *allocateCluster(unsigned int numOfNeurons, unsigned int numOfInputs) {
+Cluster *allocateCluster(const unsigned int numOfNeurons, const unsigned int numOfInputs) {
     if(numOfNeurons == 0 || numOfInputs == 0)
     {
         return NULL;
