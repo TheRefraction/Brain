@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Node *allocateNode(float value) {
+Node *allocateNode(const float value) {
     Node *node = malloc(sizeof(Node));
     node->value = value;
     node->next = NULL;
@@ -21,7 +21,7 @@ List *allocateList() {
     return list;
 }
 
-List *createList(size_t length, float value)
+List *createList(const size_t length, const float value)
 {
     List *list = allocateList();
     for (size_t i = 0; i < length; i++)

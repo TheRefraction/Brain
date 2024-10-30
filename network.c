@@ -33,7 +33,7 @@ Network *allocateNetwork(const unsigned int numOfClusters, const List *numOfNeur
     network->tail = NULL;
     network->length = 0;
 
-    Node *It = numOfNeurons->head;
+    const Node *It = numOfNeurons->head;
     while(It != NULL)
     {
         Cluster *cluster = allocateCluster(It->value, 1); // FIXME: numOfInputs not clear ??

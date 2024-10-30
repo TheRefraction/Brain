@@ -130,7 +130,7 @@ List *getClusterOutput(const Cluster *cluster, const List *inputs)
     }
 
     List *outputs = createList(cluster->length, 0);
-    ClusterNode *It = cluster->head;
+    const ClusterNode *It = cluster->head;
     Node *node = outputs->head;
     while(It != NULL)
     {

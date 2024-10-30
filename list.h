@@ -78,13 +78,13 @@ List *removeHeadList(List *list);
 List *removeTailList(List *list);
 
 /**
- * print a list with all the value with the address of the next one 
+ * print a list (with his tail, his head and his lenght) and all the element of the list with the address of the next one and the prev one.
  * @param list
  */
 void printFullList(List *list);
 
 /**
- *
+ * print a list 
  * @param list
  * @param newline
  */
