@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Neuron *allocateNeuron(List *weights, const float threshold) {
+Neuron *allocateNeuron(List *weights, float threshold) {
     Neuron *neuron = malloc(sizeof(Neuron));
     neuron->weights = weights;
     neuron->threshold = threshold;
@@ -12,21 +12,20 @@ Neuron *allocateNeuron(List *weights, const float threshold) {
 }
 
 void freeNeuron(Neuron *neuron) {
-    if(neuron != NULL)
-    {
+    if(neuron != NULL) {
         freeList(neuron->weights);
         free(neuron);
     }
 }
 
-float getNeuronOutput(const Neuron *neuron, const List *inputs) {
+float getNeuronOutput(Neuron *neuron, List *inputs) {
     if(neuron == NULL || neuron->weights == NULL || inputs == NULL || inputs->length != neuron->weights->length) {
         printf("Could not get output!\n");
         return 0;
     }
     float x = 0;
-    const Node *Wi = neuron->weights->head;
-    const Node *Ei = inputs->head;
+    Node *Wi = neuron->weights->head;
+    Node *Ei = inputs->head;
     while(Wi != NULL) {
         x += Wi->value * Ei->value;
         Wi = Wi->next;

@@ -1,5 +1,6 @@
 #include "cluster.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
 ClusterNode *allocateClusterNode(Neuron *neuron) {
@@ -19,7 +20,7 @@ void freeClusterNode(ClusterNode *node) {
     }
 }
 
-Cluster *allocateCluster(const unsigned int numOfNeurons, const unsigned int numOfInputs) {
+Cluster *allocateCluster(unsigned int numOfNeurons, unsigned int numOfInputs) {
     if(numOfNeurons == 0 || numOfInputs == 0)
     {
         return NULL;
@@ -31,11 +32,23 @@ Cluster *allocateCluster(const unsigned int numOfNeurons, const unsigned int num
     cluster->length = 0;
 
     for (unsigned int i = 0; i < numOfNeurons; i++) {
-        List *weights = createList(numOfInputs, 1);
-        Neuron *neuron = allocateNeuron(weights, 0); // FIXME: Default weights are set to 1 and threshold set to 0
+        printf("Acquisition of weights for Neuron %d\n", i + 1);
+
+        List *weights = NULL;
+        for (unsigned int j = 0; j < numOfInputs; j++) {
+            float w;
+            printf("Enter weight %d:", j + 1);
+            scanf("%f", &w);
+            weights = insertTailList(weights, w);
+        }
+        float t;
+        printf("Enter threshold for Neuron %d:", i + 1);
+        scanf("%f", &t);
+        Neuron *neuron = allocateNeuron(weights, t);
 
         cluster = insertHeadCluster(cluster, neuron);
-        cluster->length++;
+
+        printf("------------------\n");
     }
 
     return cluster;
@@ -122,9 +135,9 @@ Cluster *removeTailCluster(Cluster *cluster) {
     return cluster;
 }
 
-List *getClusterOutput(const Cluster *cluster, const List *inputs)
+List *getClusterOutput(Cluster *cluster, List *inputs)
 {
-    if(cluster == NULL || cluster->length == 0)
+    if(cluster == NULL || cluster->length == 0 || inputs == NULL || inputs->length == 0)
     {
         return NULL;
     }

@@ -4,7 +4,7 @@
 #include <stddef.h>
 
 /**
- * definition of a new structure "Node"
+ * definition of a new structure "Node" who is a link list of value
  */
 typedef struct STRUCT_NODE {
     float value;
@@ -13,7 +13,7 @@ typedef struct STRUCT_NODE {
 } Node;
 
 /**
- * definition of the lenght the head and the tail of the link list of NOde
+ * definition of the length the head and the tail of the link list of Nodes
  */
 typedef struct {
     int length;
@@ -84,9 +84,9 @@ List *removeTailList(List *list);
 void printFullList(List *list);
 
 /**
- * print a list 
+ * print a list with only the value (example:[1;2])
  * @param list
- * @param newline
+ * @param newline print a lign after the result
  */
 void printList(const List *list, int newline);
 

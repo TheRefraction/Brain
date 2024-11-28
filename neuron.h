@@ -31,7 +31,7 @@ void freeNeuron(Neuron *neuron);
  * @param inputs
  * @return
  */
-float getNeuronOutput(const Neuron *neuron, const List *inputs);
+float getNeuronOutput(Neuron *neuron, List *inputs);
 
 /**
  * Print the weight and the threshold of a specific neuron

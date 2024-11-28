@@ -4,7 +4,7 @@
 #include "neuron.h"
 
 /**
- * definition of a new structure "ClusterNode" with a list of neurons
+ * definition of a new structure "ClusterNode" who is a link list of neurons
  */
 typedef struct STRUCT_CNODE
 {
@@ -80,7 +80,13 @@ Cluster *removeHeadCluster(Cluster *cluster);
  */
 Cluster *removeTailCluster(Cluster *cluster);
 
-List *getClusterOutput(const Cluster *cluster, const List *inputs);
+/**
+ *
+ * @param cluster
+ * @param inputs
+ * @return
+ */
+List *getClusterOutput(Cluster *cluster, List *inputs);
 
 
 #endif //CLUSTER_H

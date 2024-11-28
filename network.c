@@ -1,5 +1,6 @@
 #include "network.h"
 
+#include <stdio.h>
 #include <stdlib.h>
 
 NetworkNode *allocateNetworkNode(Cluster *cluster)
@@ -21,7 +22,7 @@ void freeNetworkNode(NetworkNode *node)
     }
 }
 
-Network *allocateNetwork(const unsigned int numOfClusters, const List *numOfNeurons)
+Network *allocateNetwork(unsigned int numOfClusters, List *numOfNeurons, unsigned int numOfInputs)
 {
     if(numOfNeurons == NULL || numOfClusters == 0 || numOfNeurons->length != numOfClusters)
     {
@@ -33,11 +34,16 @@ Network *allocateNetwork(const unsigned int numOfClusters, const List *numOfNeur
     network->tail = NULL;
     network->length = 0;
 
-    const Node *It = numOfNeurons->head;
+    unsigned int inputs = numOfInputs;
+
+    Node *It = numOfNeurons->head;
     while(It != NULL)
     {
-        Cluster *cluster = allocateCluster(It->value, 1); // FIXME: numOfInputs not clear ??
-        network = insertHeadNetwork(network, cluster);
+        printf("Now allocating Cluster %d\n------------------\n", network->length + 1);
+        Cluster *cluster = allocateCluster(It->value, inputs);
+        network = insertTailNetwork(network, cluster);
+
+        inputs = It->value;
 
         It = It->next;
     }
@@ -124,4 +130,21 @@ Network *removeTailNetwork(Network *network) {
     network->length--;
 
     return network;
+}
+
+List *getNetworkOutputs(Network *network, List *inputs) {
+    if (network == NULL || network->length == 0 || inputs == NULL || inputs->length == 0) {
+        return NULL;
+    }
+
+    NetworkNode *It = network->head;
+    List *outputs = inputs;
+    while(It != NULL) {
+        List* tmp = getClusterOutput(It->cluster, outputs);
+        freeList(outputs);
+        outputs = tmp;
+        It = It->next;
+    }
+
+    return outputs;
 }
