@@ -19,6 +19,7 @@ typedef struct STRUCT_NNODE
 typedef struct
 {
     int length;
+    int numOfInputs;
     NetworkNode *head; // Input cluster
     NetworkNode *tail; // Output cluster
 } Network;

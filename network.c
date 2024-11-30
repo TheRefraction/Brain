@@ -33,6 +33,7 @@ Network *allocateNetwork(unsigned int numOfClusters, List *numOfNeurons, unsigne
     network->head = NULL;
     network->tail = NULL;
     network->length = 0;
+    network->numOfInputs = numOfInputs;
 
     unsigned int inputs = numOfInputs;
 
