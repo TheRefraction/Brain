@@ -134,7 +134,7 @@ Network *removeTailNetwork(Network *network) {
 }
 
 List *getNetworkOutputs(Network *network, List *inputs) {
-    if (network == NULL || network->length == 0 || inputs == NULL || inputs->length == 0) {
+    if (network == NULL || network->length == 0 || inputs == NULL || inputs->length != network->numOfInputs) {
         return NULL;
     }
 
