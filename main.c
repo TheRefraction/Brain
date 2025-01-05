@@ -3,18 +3,16 @@
 
 #include "network.h"
 
-// TODO: Clear up code
-// TODO: Check for memory allocation/cleanup
 int main(int argc, const char* argv[]) {
     Network *network = NULL;
 
-    short action;
+    short action = 0;
 
-    while (action != 4)
+    while (action != 3)
     {
-        printf("What action do you want to perform?\n1)Create Network\n2)Get output\n3)Help\n4)Exit\n-----\nChoice:");
+        printf("What action do you want to perform?\n1)Create Network\n2)Get output\n3)Exit\n-----\nChoice:");
         scanf("%d", &action);
-        while (action <= 0 || action > 4) {
+        while (action <= 0 || action > 3) {
             printf("Invalid Input!\nChoice:");
             scanf("%d", &action);
         }
@@ -89,11 +87,6 @@ int main(int argc, const char* argv[]) {
                     printList(inputs, 1);
                     freeList(inputs);
 
-                    break;
-                }
-            case 3: // TODO: Add help
-                {
-                    printf("No help available!\n");
                     break;
                 }
         }
