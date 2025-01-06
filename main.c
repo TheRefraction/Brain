@@ -11,10 +11,10 @@ int main(int argc, const char* argv[]) {
     while (action != 3)
     {
         printf("What action do you want to perform?\n1)Create Network\n2)Get output\n3)Exit\n-----\nChoice:");
-        scanf("%d", &action);
+        scanf("%hd", &action);
         while (action <= 0 || action > 3) {
             printf("Invalid Input!\nChoice:");
-            scanf("%d", &action);
+            scanf("%hd", &action);
         }
 
         switch (action)
